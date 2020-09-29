@@ -4,8 +4,9 @@
 target 'ReactiveApp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'ReactiveSwift'
-  pod 'ReactiveCocoa'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'Alamofire'
   # Pods for ReactiveApp
 
   target 'ReactiveAppTests' do
