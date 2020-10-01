@@ -11,39 +11,44 @@ import RxSwift
 import RxCocoa
 
 class HomeViewController: UIViewController {
-    fileprivate let viewModel: HomeViewModel
-    fileprivate let disposeBag = DisposeBag()
-
-    init(viewModel: HomeViewModel) {
-      self.viewModel = viewModel
-      super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setupViews()
-        setupLayout()
-        bindViewModel()
-    }
+  fileprivate let viewModel: HomeViewModel
+  fileprivate let disposeBag = DisposeBag()
+  
+  @IBOutlet weak var outputTextField: UILabel!
+  @IBOutlet weak var textInputTextField: UITextField!
+  init(viewModel: HomeViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    self.viewModel = HomeViewModel()
+    super.init(coder: coder)
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    setupViews()
+    setupLayout()
+    bindViewModel()
+  }
 }
 
 // MARK: Setup
 private extension HomeViewController {
-
-    func setupViews() {
-        
-    }
-
-    func setupLayout() {
+  
+  func setupViews() {
+    let text = textInputTextField.rx.text
+    text.bind(to: outputTextField.rx.text).disposed(by: disposeBag)
+  }
+  
+  func setupLayout() {
     
-    }
-
-    func bindViewModel() {
+  }
+  
+  func bindViewModel() {
     
-    }
+  }
 }
+

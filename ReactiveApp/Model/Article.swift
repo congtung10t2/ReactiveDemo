@@ -21,10 +21,10 @@ struct ArticleSource: Codable {
   let name: String?
 }
 
-struct ArticleData<T: Codable>: Codable {
+struct ArticleData: Codable {
   let status: String
   let totalResults: Int
-  let articles: [T]
+  let articles: [Article]
 }
 enum ArticleResponse<T> {
   case success(T)

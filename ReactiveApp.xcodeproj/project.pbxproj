@@ -203,6 +203,8 @@
 		2EFD515E25206FC5000E29C3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2EA832AA2520D320003F746E /* HomeViewModel.swift */,
+				2EA832A92520D320003F746E /* HomeViewController.swift */,
 				2E40DB25251F693300860435 /* MainViewController.swift */,
 				2EADE2E425238DD1002EBCB9 /* MainViewModel.swift */,
 			);
@@ -213,8 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				2E40DB27251F693300860435 /* Main.storyboard */,
-				2EA832A92520D320003F746E /* HomeViewController.swift */,
-				2EA832AA2520D320003F746E /* HomeViewModel.swift */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";

@@ -45,12 +45,12 @@ enum ApiRouter: URLRequestConvertible {
 }
 
 extension ApiRouter {
-  func request(completion: @escaping (ArticleResponse<ArticleData<Article>>) -> Void ) {
+  func request(completion: @escaping (ArticleResponse<ArticleData>) -> Void ) {
     
     AF.request(self).validate().responseJSON { response in
       switch response.result {
         case .success:
-          let result = try? JSONDecoder().decode(ArticleData<Article>.self, from: response.data!)
+          let result = try? JSONDecoder().decode(ArticleData.self, from: response.data!)
           completion(.success(result!))
         case .failure(let error):
           completion(.failure(error))
