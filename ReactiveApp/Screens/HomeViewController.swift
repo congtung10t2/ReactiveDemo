@@ -13,9 +13,7 @@ import RxCocoa
 class HomeViewController: UIViewController {
   fileprivate let viewModel: HomeViewModel
   fileprivate let disposeBag = DisposeBag()
-  
-  @IBOutlet weak var outputTextField: UILabel!
-  @IBOutlet weak var textInputTextField: UITextField!
+  @IBOutlet private weak var tableView: UITableView!
   init(viewModel: HomeViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
@@ -28,7 +26,6 @@ class HomeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     setupViews()
     setupLayout()
     bindViewModel()
@@ -39,8 +36,7 @@ class HomeViewController: UIViewController {
 private extension HomeViewController {
   
   func setupViews() {
-    let text = textInputTextField.rx.text
-    text.bind(to: outputTextField.rx.text).disposed(by: disposeBag)
+    
   }
   
   func setupLayout() {
@@ -48,7 +44,12 @@ private extension HomeViewController {
   }
   
   func bindViewModel() {
-    
+    let input = HomeViewModel.Input()
+    input.refresh.onNext(())
+    let output = viewModel.transform(input: input)
+    output.items.bind(to: tableView.rx.items(cellIdentifier: ArticleViewModelViewCell.identifier, cellType: ArticleViewModelViewCell.self)) { index, model, cell in
+      cell.bindViewModel(with: ArticleViewModel(with: model))
+    }
   }
 }
 

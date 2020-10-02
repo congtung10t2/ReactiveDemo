@@ -7,6 +7,8 @@ target 'ReactiveApp' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Alamofire'
+  pod 'MBProgressHUD'
+  pod 'RxDataSources'
   # Pods for ReactiveApp
 
   target 'ReactiveAppTests' do

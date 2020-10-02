@@ -7,21 +7,16 @@
 
 import UIKit
 import Alamofire
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 class MainViewController: UITabBarController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-      let params: Parameters = ["q": "bitcoin", "from": "2020-08-29", "sortBy": "publishedAt", "apiKey": "e9f9b296fc8f4a4388bd5b88b4556473"]
-      ApiRouter.updateNews(parameters: params).request { response in
-        switch response {
-          case .success(let data):
-            print(data)
-          case .failure(let error):
-            print(error)
-        }
-      }
+  fileprivate let viewModel: MainViewModel = MainViewModel()
+  fileprivate let disposeBag = DisposeBag()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+   
       
     }
 }

@@ -2,29 +2,39 @@
 //  HomeViewModel.swift
 //  ReactiveApp
 //
-//  Created by TungImac on 9/27/20.
-//  Copyright (c) 2020 ___ORGANIZATIONNAME___. All rights reserved.
+//  Created by TungImac on 9/29/20.
 //
 
+import Foundation
 import RxSwift
-import Alamofire
-
+import RxCocoa
 class HomeViewModel: ViewModelType {
-
-    struct Input {
-        //Input defination
-    }
-
-    struct Output {
-        //Output defination
-    }
-    
-    func transform(input: Input) -> Output {
-      return Output()
-    }
-    
-//    init(model: HomeModel, service: API) { // Your define
-//
-//    }
-
+  let disposeBag = DisposeBag()
+  struct Input {
+    let refresh: PublishSubject<Void> = PublishSubject<Void>()
+    //Input definition
+  }
+  
+  struct Output {
+    let items: BehaviorRelay<[Article]>
+    //Output definition
+  }
+  
+  func transform(input: Input) -> Output {
+    let items = BehaviorRelay<[Article]>(value: [])
+    input.refresh.flatMapLatest { result -> Observable<[Article]> in
+      return self.request()
+    }.asObservable().subscribe {
+      items.accept($0.element ?? [])
+    }.disposed(by: disposeBag)
+    return Output(items: items)
+  }
+  
+  func request() -> Observable<[Article]> {
+    ApiRouter.updateNews.request().flatMapLatest { result -> Observable<[Article]> in
+      return Observable.of(result.articles)
+    }.observeOn(MainScheduler.instance)
+      .asDriver(onErrorJustReturn: [])
+      .asObservable()
+  }
 }
