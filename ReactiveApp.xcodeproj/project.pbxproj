@@ -23,6 +23,7 @@
 		2EADE2B825237FB4002EBCB9 /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EADE2B725237FB4002EBCB9 /* ApiRouter.swift */; };
 		2EADE2D02523861E002EBCB9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EADE2CF2523861E002EBCB9 /* Article.swift */; };
 		2EADE2E525238DD1002EBCB9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EADE2E425238DD1002EBCB9 /* HomeViewModel.swift */; };
+		2EB5D195252813D200C819BC /* TrackActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5D194252813D200C819BC /* TrackActivity.swift */; };
 		2ED8BEAC25261FF30057E255 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8BEAB25261FF30057E255 /* UIViewController+Extensions.swift */; };
 		2ED8BEC2252622650057E255 /* LoadingViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8BEC1252622650057E255 /* LoadingViewable.swift */; };
 		2ED8BEC7252622F80057E255 /* UIVIew+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8BEC6252622F80057E255 /* UIVIew+Extensions.swift */; };
@@ -71,6 +72,7 @@
 		2EADE2B725237FB4002EBCB9 /* ApiRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
 		2EADE2CF2523861E002EBCB9 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		2EADE2E425238DD1002EBCB9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		2EB5D194252813D200C819BC /* TrackActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackActivity.swift; sourceTree = "<group>"; };
 		2ED8BEAB25261FF30057E255 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		2ED8BEC1252622650057E255 /* LoadingViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewable.swift; sourceTree = "<group>"; };
 		2ED8BEC6252622F80057E255 /* UIVIew+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extensions.swift"; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				2ED8BED82526307F0057E255 /* BaseViewController.swift */,
+				2EB5D194252813D200C819BC /* TrackActivity.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EB5D195252813D200C819BC /* TrackActivity.swift in Sources */,
 				2E40DB26251F693300860435 /* MainViewController.swift in Sources */,
 				2E40DB22251F693300860435 /* AppDelegate.swift in Sources */,
 				2ED8BEAC25261FF30057E255 /* UIViewController+Extensions.swift in Sources */,

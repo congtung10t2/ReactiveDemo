@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 class HomeViewModel: ViewModelType {
+  let loading = ActivityIndicator()
   let disposeBag = DisposeBag()
   struct Input {
     let refresh: PublishSubject<Void> = PublishSubject<Void>()
@@ -23,15 +24,16 @@ class HomeViewModel: ViewModelType {
   func transform(input: Input) -> Output {
     let items = BehaviorRelay<[Article]>(value: [])
     input.refresh.flatMapLatest { result -> Observable<[Article]> in
-      return self.request()
-    }.asObservable().subscribe {
-      items.accept($0.element ?? [])
-    }.disposed(by: disposeBag)
+      return self.request().retry(2)
+    }.asObservable().subscribe(onNext: { next in
+      items.accept(next)
+    }).disposed(by: disposeBag)
     return Output(items: items)
   }
   
   func request() -> Observable<[Article]> {
-    ApiRouter.updateNews.request().flatMapLatest { result -> Observable<[Article]> in
+    ApiRouter.updateNews.request().trackActivity(loading)
+      .flatMapLatest { result -> Observable<[Article]> in
       return Observable.of(result.articles)
     }.observeOn(MainScheduler.instance)
       .asDriver(onErrorJustReturn: [])

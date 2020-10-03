@@ -45,11 +45,11 @@ private extension HomeViewController {
   
   func bindViewModel() {
     let input = HomeViewModel.Input()
-    input.refresh.onNext(())
     let output = viewModel.transform(input: input)
+    input.refresh.onNext(())
     output.items.bind(to: tableView.rx.items(cellIdentifier: ArticleViewModelViewCell.identifier, cellType: ArticleViewModelViewCell.self)) { index, model, cell in
       cell.bindViewModel(with: ArticleViewModel(with: model))
-    }
+    }.disposed(by: disposeBag)
   }
 }
 
