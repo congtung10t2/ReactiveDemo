@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,9 +32,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="suT-Ty-ZT1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="suT-Ty-ZT1">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleViewModelViewCell" id="OIk-2l-rht" customClass="ArticleViewModelViewCell" customModule="ReactiveApp" customModuleProvider="target">
@@ -53,7 +51,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="AccentColor"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="title" destination="UNl-bU-oc2" id="Qbm-6g-xpl"/>
@@ -64,6 +61,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IYe-oA-b6E"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="suT-Ty-ZT1" firstAttribute="leading" secondItem="IYe-oA-b6E" secondAttribute="leading" id="3j4-m8-bbV"/>
+                            <constraint firstItem="IYe-oA-b6E" firstAttribute="bottom" secondItem="suT-Ty-ZT1" secondAttribute="bottom" id="AQT-8m-Ih6"/>
+                            <constraint firstItem="IYe-oA-b6E" firstAttribute="trailing" secondItem="suT-Ty-ZT1" secondAttribute="trailing" id="LBc-pV-m0c"/>
+                            <constraint firstItem="suT-Ty-ZT1" firstAttribute="top" secondItem="IYe-oA-b6E" secondAttribute="top" id="gXA-GL-bWR"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="taX-XC-XLl"/>
                     <connections>
@@ -94,9 +97,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

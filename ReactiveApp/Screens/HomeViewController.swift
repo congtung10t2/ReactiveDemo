@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
   fileprivate let viewModel: HomeViewModel
   fileprivate let disposeBag = DisposeBag()
   @IBOutlet private weak var tableView: UITableView!
+  let isLoading = BehaviorRelay(value: false)
+  let viewWillAppear = PublishSubject<Void>()
   init(viewModel: HomeViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
@@ -30,6 +32,11 @@ class HomeViewController: UIViewController {
     setupLayout()
     bindViewModel()
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.viewWillAppear.onNext(())
+  }
 }
 
 // MARK: Setup
@@ -44,9 +51,11 @@ private extension HomeViewController {
   }
   
   func bindViewModel() {
+    
     let input = HomeViewModel.Input()
     let output = viewModel.transform(input: input)
-    input.refresh.onNext(())
+    viewWillAppear.asObserver().bind(to: input.viewWillAppear).disposed(by: disposeBag)
+    viewModel.loading.asObservable().bind(to: rx.isAnimating).disposed(by: disposeBag)
     output.items.bind(to: tableView.rx.items(cellIdentifier: ArticleViewModelViewCell.identifier, cellType: ArticleViewModelViewCell.self)) { index, model, cell in
       cell.bindViewModel(with: ArticleViewModel(with: model))
     }.disposed(by: disposeBag)

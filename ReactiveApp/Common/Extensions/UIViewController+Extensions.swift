@@ -16,12 +16,26 @@ extension Reactive where Base: UIViewController {
     /// Bindable sink for `startAnimating()`, `stopAnimating()` methods.
     public var isAnimating: Binder<Bool> {
         return Binder(self.base, binding: { (vc, active) in
-            if active {
+          DispatchQueue.main.async {
+            if !active {
               vc.startAnimating()
             } else {
               vc.stopAnimating()
             }
+          }
+            
         })
     }
     
+}
+extension UIViewController {
+  var topViewController: UIViewController? {
+    if let  topController = UIApplication.shared.windows.first?.rootViewController  {
+        while let presentedViewController = topController.presentedViewController {
+            return presentedViewController
+        }
+    }
+    return nil
+  }
+  
 }
