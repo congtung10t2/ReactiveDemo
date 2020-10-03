@@ -20,16 +20,19 @@ class ArticleViewModel: DefaultTableViewCellViewModel {
 class ArticleViewModelViewCell: UITableViewCell {
   static let identifier = "ArticleViewModelViewCell"
   var viewModel: ArticleViewModel!
+  let disposeBag = DisposeBag()
+  @IBOutlet private weak var title: UILabel!
   required init?(coder aDecoder: NSCoder) {
       super.init(coder: aDecoder)
-      makeUI()
+      
   }
   
   func bindViewModel(with viewModel: ArticleViewModel) {
     self.viewModel = viewModel
+    makeUI()
   }
   
   func makeUI() {
-    
+    viewModel.title.asDriver().drive(title.rx.text).disposed(by: disposeBag)
   }
 }

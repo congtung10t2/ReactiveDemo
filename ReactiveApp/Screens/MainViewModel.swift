@@ -22,9 +22,4 @@ class MainViewModel: ViewModelType {
     func transform(input: Input) -> Output {
       return Output()
     }
-    
-//    init(model: HomeModel, service: API) { // Your define
-//
-//    }
-
 }

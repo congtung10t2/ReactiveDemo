@@ -24,19 +24,16 @@ class HomeViewModel: ViewModelType {
   func transform(input: Input) -> Output {
     let items = BehaviorRelay<[Article]>(value: [])
     input.refresh.flatMapLatest { result -> Observable<[Article]> in
-      return self.request().retry(2)
+      self.request().flatMapLatest { result -> Observable<[Article]> in
+        return Observable.of(result.articles)
+      }
     }.asObservable().subscribe(onNext: { next in
       items.accept(next)
     }).disposed(by: disposeBag)
     return Output(items: items)
   }
   
-  func request() -> Observable<[Article]> {
-    ApiRouter.updateNews.request().trackActivity(loading)
-      .flatMapLatest { result -> Observable<[Article]> in
-      return Observable.of(result.articles)
-    }.observeOn(MainScheduler.instance)
-      .asDriver(onErrorJustReturn: [])
-      .asObservable()
+  func request() -> Observable<ArticleData> {
+    ApiRouter.updateNews.doRequest()
   }
 }

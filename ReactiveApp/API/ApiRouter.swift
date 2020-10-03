@@ -10,10 +10,8 @@ import Alamofire
 import RxSwift
 
 enum ApiRouter: URLRequestConvertible {
-  
   case updateNews
-  
-  static let baseURLString = "http://newsapi.org/v2/"
+  static let baseURLString = "https://newsapi.org/v2/"
 }
 
 extension ApiRouter {
@@ -28,7 +26,7 @@ extension ApiRouter {
   var path: String {
     switch self {
       case .updateNews:
-        return "/everything"
+        return "everything"
     }
   }
   
@@ -39,28 +37,24 @@ extension ApiRouter {
     
     var urlRequest = URLRequest(url: url.appendingPathComponent(path))
     urlRequest.httpMethod = method.rawValue
-    
-    switch self {
-      case .updateNews:
-        urlRequest = try URLEncoding.default.encode(urlRequest, with: param)
-    }
+    urlRequest = try URLEncoding.default.encode(urlRequest, with: param)
     return urlRequest
   }
 }
 
 extension ApiRouter {
-  func request() -> Observable<ArticleData> {
+  func doRequest<T: Codable> () -> Observable<T> {
     return Observable.create { observe in
       let request = AF.request(self).validate().responseJSON { response in
         switch response.result {
           case .success:
-            if let result = try? JSONDecoder().decode(ArticleData.self, from: response.data!) {
+            print(T.self)
+            if let result = try? JSONDecoder().decode(T.self, from: response.data!) {
               observe.onNext(result)
             } else {
               let error = NSError(domain: "com.tung.example", code: 1, userInfo: ["message": "cannot complete the function"])
               observe.onError(error)
             }
-            
           case .failure(let error):
             observe.onError(error)
         }
