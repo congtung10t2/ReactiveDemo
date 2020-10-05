@@ -54,6 +54,9 @@ private extension HomeViewController {
     
     let input = HomeViewModel.Input()
     let output = viewModel.transform(input: input)
+    output.error.asObserver().subscribe { [weak self] error in
+      self?.alert(message: error.element?.localizedDescription ?? "")
+    }.disposed(by: disposeBag)
     viewWillAppear.asObserver().bind(to: input.viewWillAppear).disposed(by: disposeBag)
     viewModel.loading.asObservable().bind(to: rx.isAnimating).disposed(by: disposeBag)
     output.items.bind(to: tableView.rx.items(cellIdentifier: ArticleViewModelViewCell.identifier, cellType: ArticleViewModelViewCell.self)) { index, model, cell in

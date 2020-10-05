@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2BDA5C9EE3240F86BFCFBD70 /* Pods_ReactiveApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7905F304CFDD894F84330555 /* Pods_ReactiveApp.framework */; };
+		2E0D240F252B7092009E7DB5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D240E252B7092009E7DB5 /* Date+Extensions.swift */; };
 		2E40DB22251F693300860435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E40DB21251F693300860435 /* AppDelegate.swift */; };
 		2E40DB24251F693300860435 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E40DB23251F693300860435 /* SceneDelegate.swift */; };
 		2E40DB26251F693300860435 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E40DB25251F693300860435 /* MainViewController.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E0D240E252B7092009E7DB5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		2E40DB1E251F693300860435 /* ReactiveApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E40DB21251F693300860435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E40DB23251F693300860435 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				2ED8BEAB25261FF30057E255 /* UIViewController+Extensions.swift */,
 				2ED8BEC1252622650057E255 /* LoadingViewable.swift */,
 				2ED8BEC6252622F80057E255 /* UIVIew+Extensions.swift */,
+				2E0D240E252B7092009E7DB5 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				2ED8BEC2252622650057E255 /* LoadingViewable.swift in Sources */,
 				2ED8BED92526307F0057E255 /* BaseViewController.swift in Sources */,
 				2EA832B12520D4BA003F746E /* ViewModelType.swift in Sources */,
+				2E0D240F252B7092009E7DB5 /* Date+Extensions.swift in Sources */,
 				2E40DB24251F693300860435 /* SceneDelegate.swift in Sources */,
 				2ED8BEC7252622F80057E255 /* UIVIew+Extensions.swift in Sources */,
 				2EADE2D02523861E002EBCB9 /* Article.swift in Sources */,

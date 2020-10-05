@@ -31,10 +31,8 @@ extension ApiRouter {
   }
   
   // MARK: URLRequestConvertible
-  
   func asURLRequest() throws -> URLRequest {
     let url = try ApiRouter.baseURLString.asURL()
-    
     var urlRequest = URLRequest(url: url.appendingPathComponent(path))
     urlRequest.httpMethod = method.rawValue
     urlRequest = try URLEncoding.default.encode(urlRequest, with: param)
