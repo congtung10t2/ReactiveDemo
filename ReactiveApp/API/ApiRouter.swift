@@ -52,7 +52,7 @@ extension ApiRouter {
             if let result = try? JSONDecoder().decode(T.self, from: response.data!) {
               observe.onNext(result)
             } else {
-              let error = NSError(domain: "com.tung.example", code: 1, userInfo: ["message": "cannot complete the function"])
+              let error = NSError(domain: "com.tung.example", code: 1, userInfo: ["message": "cannot decode"])
               observe.onError(error)
             }
           case .failure(let error):

@@ -19,20 +19,25 @@ class HomeViewModel: ViewModelType {
   
   struct Output {
     let items: BehaviorRelay<[Article]>
+    let error: PublishSubject<Error>
     //Output definition
   }
   
   func transform(input: Input) -> Output {
     let items = BehaviorRelay<[Article]>(value: [])
+    let publishError = PublishSubject<Error>()
     input.viewWillAppear.bind(to: input.refresh).disposed(by: disposeBag)
     input.refresh.flatMapLatest { result -> Observable<[Article]> in
       self.request().flatMapLatest { result -> Observable<[Article]> in
         return Observable.of(result.articles)
+      }.catchError { error -> Observable<[Article]> in
+        publishError.onNext(error)
+        return Observable.of([])
       }
     }.asObservable().subscribe(onNext: { next in
         items.accept(next)
     }).disposed(by: disposeBag)
-    return Output(items: items)
+    return Output(items: items, error: publishError)
   }
   
   func request() -> Observable<ArticleData> {
