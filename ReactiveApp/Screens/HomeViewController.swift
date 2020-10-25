@@ -62,6 +62,12 @@ private extension HomeViewController {
     output.items.bind(to: tableView.rx.items(cellIdentifier: ArticleViewModelViewCell.identifier, cellType: ArticleViewModelViewCell.self)) { index, model, cell in
       cell.bindViewModel(with: ArticleViewModel(with: model))
     }.disposed(by: disposeBag)
+    tableView.rx.itemSelected
+      .subscribe(onNext: { [weak self] indexPath in
+        let cell = self?.tableView.cellForRow(at: indexPath) as? ArticleViewModelViewCell
+        guard let title = cell?.viewModel.article.title else { return }
+        print(title)
+      }).disposed(by: disposeBag)
   }
 }
 

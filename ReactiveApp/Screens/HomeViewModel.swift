@@ -28,7 +28,7 @@ class HomeViewModel: ViewModelType {
     let publishError = PublishSubject<Error>()
     input.viewWillAppear.bind(to: input.refresh).disposed(by: disposeBag)
     input.refresh.flatMapLatest { result -> Observable<[Article]> in
-      self.request().flatMapLatest { result -> Observable<[Article]> in
+      self.request().retry(5).flatMapLatest { result -> Observable<[Article]> in
         return Observable.of(result.articles)
       }.catchError { error -> Observable<[Article]> in
         publishError.onNext(error)

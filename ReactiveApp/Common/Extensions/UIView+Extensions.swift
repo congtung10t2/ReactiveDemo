@@ -1,5 +1,5 @@
 //
-//  UIVIew+Extensions.swift
+//  UIView+Extensions.swift
 //  ReactiveApp
 //
 //  Created by TungImac on 10/1/20.
@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 extension UIView {
+  static var identifier: String {
+    return String(describing: self)
+  }
     func addBlurArea(area: CGRect, style: UIBlurEffect.Style) {
         let effect = UIBlurEffect(style: style)
         let blurView = UIVisualEffectView(effect: effect)

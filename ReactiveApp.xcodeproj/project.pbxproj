@@ -27,7 +27,7 @@
 		2EB5D195252813D200C819BC /* TrackActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5D194252813D200C819BC /* TrackActivity.swift */; };
 		2ED8BEAC25261FF30057E255 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8BEAB25261FF30057E255 /* UIViewController+Extensions.swift */; };
 		2ED8BEC2252622650057E255 /* LoadingViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8BEC1252622650057E255 /* LoadingViewable.swift */; };
-		2ED8BEC7252622F80057E255 /* UIVIew+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8BEC6252622F80057E255 /* UIVIew+Extensions.swift */; };
+		2ED8BEC7252622F80057E255 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8BEC6252622F80057E255 /* UIView+Extensions.swift */; };
 		2ED8BED325262FEC0057E255 /* ArticleViewModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8BED225262FEC0057E255 /* ArticleViewModelCell.swift */; };
 		2ED8BED92526307F0057E255 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8BED82526307F0057E255 /* BaseViewController.swift */; };
 		B3042B444EC55F73F15DEF0A /* Pods_ReactiveApp_ReactiveAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 591361197771D226004C5064 /* Pods_ReactiveApp_ReactiveAppUITests.framework */; };
@@ -77,7 +77,7 @@
 		2EB5D194252813D200C819BC /* TrackActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackActivity.swift; sourceTree = "<group>"; };
 		2ED8BEAB25261FF30057E255 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		2ED8BEC1252622650057E255 /* LoadingViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewable.swift; sourceTree = "<group>"; };
-		2ED8BEC6252622F80057E255 /* UIVIew+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extensions.swift"; sourceTree = "<group>"; };
+		2ED8BEC6252622F80057E255 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		2ED8BED225262FEC0057E255 /* ArticleViewModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModelCell.swift; sourceTree = "<group>"; };
 		2ED8BED82526307F0057E255 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		48473639B371AB51B4D4E6CF /* Pods-ReactiveApp-ReactiveAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveApp-ReactiveAppUITests.release.xcconfig"; path = "Target Support Files/Pods-ReactiveApp-ReactiveAppUITests/Pods-ReactiveApp-ReactiveAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 			children = (
 				2ED8BEAB25261FF30057E255 /* UIViewController+Extensions.swift */,
 				2ED8BEC1252622650057E255 /* LoadingViewable.swift */,
-				2ED8BEC6252622F80057E255 /* UIVIew+Extensions.swift */,
+				2ED8BEC6252622F80057E255 /* UIView+Extensions.swift */,
 				2E0D240E252B7092009E7DB5 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
@@ -530,7 +530,7 @@
 				2EA832B12520D4BA003F746E /* ViewModelType.swift in Sources */,
 				2E0D240F252B7092009E7DB5 /* Date+Extensions.swift in Sources */,
 				2E40DB24251F693300860435 /* SceneDelegate.swift in Sources */,
-				2ED8BEC7252622F80057E255 /* UIVIew+Extensions.swift in Sources */,
+				2ED8BEC7252622F80057E255 /* UIView+Extensions.swift in Sources */,
 				2EADE2D02523861E002EBCB9 /* Article.swift in Sources */,
 				2EA832AC2520D320003F746E /* MainViewModel.swift in Sources */,
 				2E4F40BD252773FA009A8A2A /* ApiParams.swift in Sources */,
