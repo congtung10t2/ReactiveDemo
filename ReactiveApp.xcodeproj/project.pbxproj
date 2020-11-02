@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2BDA5C9EE3240F86BFCFBD70 /* Pods_ReactiveApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7905F304CFDD894F84330555 /* Pods_ReactiveApp.framework */; };
 		2E0D240F252B7092009E7DB5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D240E252B7092009E7DB5 /* Date+Extensions.swift */; };
+		2E15B4E2255066C600FD1210 /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E15B4E1255066C600FD1210 /* news.json */; };
+		2E15B4F5255068D000FD1210 /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E15B4F4255068D000FD1210 /* ServiceLayer.swift */; };
 		2E40DB22251F693300860435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E40DB21251F693300860435 /* AppDelegate.swift */; };
 		2E40DB24251F693300860435 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E40DB23251F693300860435 /* SceneDelegate.swift */; };
 		2E40DB26251F693300860435 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E40DB25251F693300860435 /* MainViewController.swift */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		2E0D240E252B7092009E7DB5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		2E15B4E1255066C600FD1210 /* news.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = news.json; sourceTree = "<group>"; };
+		2E15B4F4255068D000FD1210 /* ServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
 		2E40DB1E251F693300860435 /* ReactiveApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E40DB21251F693300860435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E40DB23251F693300860435 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +123,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E15B4E02550665400FD1210 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2E15B4E1255066C600FD1210 /* news.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		2E40DB15251F693300860435 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +156,7 @@
 		2E40DB20251F693300860435 /* ReactiveApp */ = {
 			isa = PBXGroup;
 			children = (
+				2E15B4E02550665400FD1210 /* Resources */,
 				2EFD516025206FD9000E29C3 /* Storyboard */,
 				2EFD515E25206FC5000E29C3 /* Screens */,
 				2EFD515D25206FBF000E29C3 /* Model */,
@@ -197,6 +210,7 @@
 			children = (
 				2EADE2B725237FB4002EBCB9 /* ApiRouter.swift */,
 				2E4F40BC252773FA009A8A2A /* ApiParams.swift */,
+				2E15B4F4255068D000FD1210 /* ServiceLayer.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -392,6 +406,7 @@
 			files = (
 				2E40DB2E251F693400860435 /* LaunchScreen.storyboard in Resources */,
 				2E40DB2B251F693400860435 /* Assets.xcassets in Resources */,
+				2E15B4E2255066C600FD1210 /* news.json in Resources */,
 				2E40DB29251F693300860435 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +542,7 @@
 				2ED8BED325262FEC0057E255 /* ArticleViewModelCell.swift in Sources */,
 				2ED8BEC2252622650057E255 /* LoadingViewable.swift in Sources */,
 				2ED8BED92526307F0057E255 /* BaseViewController.swift in Sources */,
+				2E15B4F5255068D000FD1210 /* ServiceLayer.swift in Sources */,
 				2EA832B12520D4BA003F746E /* ViewModelType.swift in Sources */,
 				2E0D240F252B7092009E7DB5 /* Date+Extensions.swift in Sources */,
 				2E40DB24251F693300860435 /* SceneDelegate.swift in Sources */,

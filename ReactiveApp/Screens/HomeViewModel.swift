@@ -36,6 +36,6 @@ class HomeViewModel: ViewModelType {
   }
   
   func request() -> Observable<ArticleData> {
-    ApiRouter.updateNews.doRequest().trackActivity(loading)
+    ServiceLayer.shared.doRequest().trackActivity(loading)
   }
 }

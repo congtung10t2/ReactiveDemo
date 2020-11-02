@@ -6,17 +6,37 @@
 //
 
 import Foundation
-import Alamofire
 import RxSwift
+import Moya
 
-enum ApiRouter: URLRequestConvertible {
+enum ApiRouter: TargetType {
+  var baseURL: URL { return URL(string: "https://newsapi.org/v2/")! }
+  
+  var sampleData: Data {
+    
+    guard let url = Bundle.main.url(forResource: "news", withExtension: "json"),
+          let data = try? Data(contentsOf: url) else {
+      return Data()
+    }
+    return data
+    
+  }
+  var task: Task {
+    //request .requestPlain
+    return .requestParameters(parameters: self.param!, encoding: URLEncoding.queryString)
+    
+  }
+  
+  var headers: [String: String]? {
+    return ["Content-type": "application/json"]
+  }
+  
   case updateNews
-  static let baseURLString = "https://newsapi.org/v2/"
 }
 
 extension ApiRouter {
   
-  var method: HTTPMethod {
+  var method: Moya.Method {
     switch self {
       case .updateNews:
         return .get
@@ -29,39 +49,13 @@ extension ApiRouter {
         return "everything"
     }
   }
-  
-  // MARK: URLRequestConvertible
-  func asURLRequest() throws -> URLRequest {
-    let url = try ApiRouter.baseURLString.asURL()
-    var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-    urlRequest.httpMethod = method.rawValue
-    urlRequest = try URLEncoding.default.encode(urlRequest, with: param)
-    return urlRequest
-  }
 }
-
-extension ApiRouter {
-  func doRequest<T: Codable> () -> Observable<T> {
-    return Observable.create { observe in
-      let request = AF.request(self).validate().responseJSON { response in
-        switch response.result {
-          case .success:
-            print(T.self)
-            if let result = try? JSONDecoder().decode(T.self, from: response.data!) {
-              observe.onNext(result)
-            } else {
-              let error = NSError(domain: "com.tung.example", code: 1, userInfo: ["message": "cannot decode"])
-              observe.onError(error)
-            }
-          case .failure(let error):
-            observe.onError(error)
-        }
-      }
-      return Disposables.create {
-        request.cancel()
-      }
-    }
+private extension String {
+  var urlEscaped: String {
+    return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
   }
   
+  var utf8Encoded: Data {
+    return data(using: .utf8)!
+  }
 }
-
