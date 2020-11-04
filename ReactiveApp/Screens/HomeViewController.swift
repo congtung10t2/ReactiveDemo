@@ -54,11 +54,14 @@ private extension HomeViewController {
     
     let input = HomeViewModel.Input()
     let output = viewModel.transform(input: input)
+    viewModel.loading.asObservable().bind(to: isLoading).disposed(by: disposeBag)
+    isLoading.asDriver().drive(onNext: { [weak self] (isLoading) in
+        isLoading ? self?.startAnimating() : self?.stopAnimating()
+    }).disposed(by: disposeBag)
     output.error.asObserver().subscribe { [weak self] error in
       self?.alert(message: error.element?.localizedDescription ?? "")
     }.disposed(by: disposeBag)
     viewWillAppear.asObserver().bind(to: input.viewWillAppear).disposed(by: disposeBag)
-    viewModel.loading.asObservable().bind(to: rx.isAnimating).disposed(by: disposeBag)
     output.items.bind(to: tableView.rx.items(cellIdentifier: ArticleViewModelViewCell.identifier, cellType: ArticleViewModelViewCell.self)) { index, model, cell in
       cell.bindViewModel(with: ArticleViewModel(with: model))
     }.disposed(by: disposeBag)
@@ -68,6 +71,7 @@ private extension HomeViewController {
         guard let title = cell?.viewModel.article.title else { return }
         print(title)
       }).disposed(by: disposeBag)
+    
   }
 }
 

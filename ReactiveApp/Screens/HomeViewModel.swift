@@ -28,14 +28,14 @@ class HomeViewModel: ViewModelType {
     let publishError = PublishSubject<Error>()
     input.viewWillAppear.bind(to: input.refresh).disposed(by: disposeBag)
     input.refresh.flatMapLatest { result -> Observable<[Article]> in
-        self.request().retry(5).map { $0.articles }.catchErrorJustReturn([])
-    }.asObservable().subscribe(onNext: { next in
-        items.accept(next)
+      self.request().retry(5).map { $0.articles }.catchErrorJustReturn([])
+    }.asObservable().subscribe(onNext: { value in
+        items.accept(value)
     }).disposed(by: disposeBag)
     return Output(items: items, error: publishError)
   }
   
   func request() -> Observable<ArticleData> {
-    ServiceLayer.shared.doRequest().trackActivity(loading)
+    ServiceLayer.shared.doRequest().trackActivity(loading).take(1)
   }
 }
