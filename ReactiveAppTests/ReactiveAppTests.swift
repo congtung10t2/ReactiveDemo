@@ -6,28 +6,21 @@
 //
 
 import XCTest
+import RxSwift
 @testable import ReactiveApp
 
 class ReactiveAppTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+  let service = ServiceLayer(mock: true, delayMock: 1.5)
+  let disposeBag = DisposeBag()
+  func testExample() throws {
+    let expect =  self.expectation(description: "expect API finished with 3659 results")
+    let homeViewModel = HomeViewModel()
+    homeViewModel.request().subscribe(onNext: { value in
+      XCTAssertEqual(value.totalResults, 3659)
+      expect.fulfill()
+    }).disposed(by: disposeBag)
+    waitForExpectations(timeout: 2, handler: nil)
+      // This is an example of a functional test case.
+      // Use XCTAssert and related functions to verify your tests produce the correct results.
+  }
 }

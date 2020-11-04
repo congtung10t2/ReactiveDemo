@@ -10,8 +10,15 @@ import Moya
 import RxSwift
 let mock = true
 class ServiceLayer {
-  static let shared = ServiceLayer()
-  let provider = mock ? MoyaProvider<ApiRouter>(stubClosure: MoyaProvider.delayedStub(2)) : MoyaProvider<ApiRouter>()
+  static let shared = ServiceLayer(mock: true)
+  let provider: MoyaProvider<ApiRouter>!
+  init(mock: Bool, delayMock: Double = 1) {
+    if delayMock <= 0.0001 {
+      provider = MoyaProvider<ApiRouter>(stubClosure: MoyaProvider.immediatelyStub)
+      return
+    }
+    provider = mock ? MoyaProvider<ApiRouter>(stubClosure: MoyaProvider.delayedStub(delayMock)) : MoyaProvider<ApiRouter>()
+  }
   func doRequest<T: Codable> () -> Observable<T> {
     return Observable.create { observe in
       return self.provider.rx.request(.updateNews).subscribe { event in
